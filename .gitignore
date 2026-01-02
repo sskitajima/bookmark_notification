@@ -16,3 +16,6 @@ config/config.yaml
 
 # prototype implementation
 prototype/
+
+# Log files
+logs/
