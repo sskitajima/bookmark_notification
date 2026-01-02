@@ -52,6 +52,7 @@ class MailSender:
         # The file token.json stores the user's access and refresh tokens, and is
         # created automatically when the authorization flow completes for the first time.
         if self.token_path.exists():
+            logger.info(f"Loading credentials from {self.token_path}")
             try:
                 creds = Credentials.from_authorized_user_file(
                     str(self.token_path), SCOPES

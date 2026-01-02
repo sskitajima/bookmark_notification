@@ -14,6 +14,7 @@ mail:
 
   # Path to Gmail API credentials JSON file
   credential_path: "/path/to/your/credentials.json"
+  token_path: "/path/to/your/token.json"
 
 # Application configuration
 app:

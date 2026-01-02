@@ -66,6 +66,7 @@ def main():
         to_addr = mail_config.get("to")
         from_addr = mail_config.get("from")
         credential_path = mail_config.get("credential_path")
+        token_path = mail_config.get("token_path", None)
 
         if not all([to_addr, from_addr, credential_path]):
             logger.error("Missing mail configuration")
@@ -87,7 +88,7 @@ def main():
 
         content_manager = ContentManager()
         mail_writer = MailWriter()
-        mail_sender = MailSender(credential_path=credential_path)
+        mail_sender = MailSender(credential_path=credential_path, token_path=token_path)
 
         # Retrieve bookmarks
         logger.info("Retrieving bookmarks from Instapaper")
