@@ -1,0 +1,18 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Config files
+config/credentials.json
+config/token.json
+config/config.yaml
+
+# prototype implementation
+prototype/

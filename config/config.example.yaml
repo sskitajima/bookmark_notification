@@ -1,0 +1,26 @@
+# Bookmark Notification Configuration
+
+# Instapaper API configuration
+instapaper:
+  consumer_key: "your_consumer_key_here"
+  consumer_secret: "your_consumer_secret_here"
+  username: "your_username_here"
+  password: "your_password_here"
+
+# Mail configuration
+mail:
+  to: "example@example.com"
+  from: "example@example.com"
+
+  # Path to Gmail API credentials JSON file
+  credential_path: "/path/to/your/credentials.json"
+
+# Application configuration
+app:
+  # Maximum number of bookmarks to retrieve from Instapaper
+  bookmark_limit: 500
+  # Number of bookmarks to randomly select and send
+  bookmark_count: 5
+  # Instapaper folder ID (e.g., "unread", "archive", or folder number)
+  folder_id: "unread"
+
