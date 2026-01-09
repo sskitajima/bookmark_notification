@@ -8,7 +8,7 @@ UV_BIN=/home/kitajima/.local/bin/uv
 # echo $SCRIPT_DIR
 
 # Check if "logs" directory exists, if not create it
-if [ ! -d "./logs" ]; then
+if [ ! -d "$SCRIPT_DIR/logs" ]; then
   mkdir $SCRIPT_DIR/logs
 fi
 
