@@ -3,6 +3,7 @@
 import base64
 from pathlib import Path
 from typing import Optional
+import logging
 
 from email.message import EmailMessage
 from google.auth.transport.requests import Request
@@ -11,11 +12,10 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
-from common.logger import setup_logger
 from common.mail_content import MailContent
 from common.response import Response
 
-logger = setup_logger(__name__)
+logger = logging.getLogger(__name__)
 
 SCOPES = [
     "https://www.googleapis.com/auth/gmail.readonly",

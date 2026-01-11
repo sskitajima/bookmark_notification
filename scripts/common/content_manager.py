@@ -2,11 +2,11 @@
 
 import random
 from typing import Optional
+import logging
 
 from common.bookmark import Bookmark
-from common.logger import setup_logger
 
-logger = setup_logger(__name__)
+logger = logging.getLogger(__name__)
 
 
 class ContentManager:

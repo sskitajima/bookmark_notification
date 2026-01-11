@@ -1,37 +1,51 @@
 """Logger configuration."""
 
 import logging
+import logging.handlers
 import sys
+import datetime
 
+from typing import Optional
 
-def setup_logger(
-    name: str = "bookmark_notification", log_level: str = "INFO"
-) -> logging.Logger:
-    """Setup and return a logger instance.
+def configure_logging(
+    log_level: str = "INFO",
+    log_file_path: Optional[str] = None
+):
+    """Configure the root logger.
 
     Args:
-        name: Logger name
         log_level: Logging level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+        log_file_path: Optional file path to log to a file. If None, logs to console.
 
     Returns:
-        Configured logger instance
+        None
     """
-    logger = logging.getLogger(name)
-    logger.setLevel(getattr(logging, log_level.upper(), logging.INFO))
-
-    # Avoid adding handlers multiple times
-    if logger.handlers:
-        return logger
-
     # Create formatter
     formatter = logging.Formatter(
         "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
         datefmt="%Y-%m-%d %H:%M:%S",
     )
 
-    # Console handler
-    console_handler = logging.StreamHandler(sys.stdout)
-    console_handler.setFormatter(formatter)
-    logger.addHandler(console_handler)
+    # Add handler
+    handlers = []
+    if log_file_path:
+        file_handler = logging.handlers.TimedRotatingFileHandler(
+            log_file_path,
+            interval=30,
+            when="D",
+            atTime=datetime.time(hour=1, minute=0, second=0),
+            backupCount=10
+        )
+        file_handler.setFormatter(formatter)
+        handlers.append(file_handler)
+    else:
+        console_handler = logging.StreamHandler(sys.stdout)
+        console_handler.setFormatter(formatter)
+        handlers.append(console_handler)
 
-    return logger
+    logging.basicConfig(
+        level=log_level.upper(),
+        format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+        datefmt="%Y-%m-%d %H:%M:%S",
+        handlers=handlers
+    )

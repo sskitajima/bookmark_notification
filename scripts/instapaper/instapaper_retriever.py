@@ -4,12 +4,11 @@ from typing import Optional
 
 import requests
 from requests_oauthlib import OAuth1
+import logging
 
 from common.bookmark import Bookmark
-from common.logger import setup_logger
 
-logger = setup_logger(__name__)
-
+logger = logging.getLogger(__name__)
 
 class InstapaperRetriever:
     """Retrieve bookmarks from Instapaper."""

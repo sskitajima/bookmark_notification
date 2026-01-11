@@ -9,8 +9,8 @@ UV_BIN=/home/kitajima/.local/bin/uv
 
 # Check if "logs" directory exists, if not create it
 if [ ! -d "$SCRIPT_DIR/logs" ]; then
-  mkdir $SCRIPT_DIR/logs
+  mkdir -p $SCRIPT_DIR/logs
 fi
 
 # Execute the Python script with uv and redirect output to log file
-"$UV_BIN" run $SCRIPT_DIR/scripts/main.py 
+"$UV_BIN" run --project $SCRIPT_DIR $SCRIPT_DIR/scripts/main.py 

@@ -24,4 +24,6 @@ app:
   bookmark_count: 5
   # Instapaper folder ID (e.g., "unread", "archive", or folder number)
   folder_id: "unread"
+  # log file path (if empty, logs will be printed to console)
+  log_file_path: "/path/to/your/logfile.log"
 

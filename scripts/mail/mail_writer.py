@@ -1,13 +1,12 @@
 """Mail content writer."""
 
+import logging
 from typing import Optional
 
 from common.bookmark import Bookmark
-from common.logger import setup_logger
 from common.mail_content import MailContent
 
-logger = setup_logger(__name__)
-
+logger = logging.getLogger(__name__)
 
 class MailWriter:
     """Write email content from bookmarks."""

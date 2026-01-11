@@ -1,5 +1,6 @@
 """Main entry point for bookmark notification application."""
 
+import logging
 import sys
 from pathlib import Path
 
@@ -9,13 +10,12 @@ sys.path.insert(0, str(Path(__file__).parent))
 import yaml
 
 from common.content_manager import ContentManager
-from common.logger import setup_logger
+from common.logger import configure_logging
 from instapaper.instapaper_retriever import InstapaperRetriever
 from mail.mail_sender import MailSender
 from mail.mail_writer import MailWriter
 
-logger = setup_logger(__name__)
-
+logger = logging.getLogger(__name__)
 
 def load_config(config_path: Path) -> dict:
     """Load configuration from YAML file.
@@ -48,6 +48,11 @@ def main():
         # Load configuration
         config_path = Path(__file__).parent.parent / "config" / "config.yaml"
         config = load_config(config_path)
+
+        configure_logging(
+            log_level=config.get("app", {}).get("log_level", "INFO"),
+            log_file_path=config.get("app", {}).get("log_file_path", None),
+        )
         logger.info(f"Loaded configuration from {config_path}")
 
         # Get Instapaper configuration
